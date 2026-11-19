@@ -1,0 +1,1035 @@
+/* ==========================================================================
+   🛠️ updateapp.css - ملف التنسيقات الكامل لصفحة وضع الصيانة والتطوير
+   منصة إِسْـأَلْ الأكاديمية (itqan.tech)
+   ========================================================================== */
+
+:root {
+    --bg-gradient: radial-gradient(circle at 50% 10%, rgba(242, 101, 34, 0.08) 0%, #f8fafc 100%);
+    --bg: #f8fafc;
+    --panel: #ffffff;
+    --panel-secondary: #f1f5f9;
+    --panel-hover: #e2e8f0;
+    --txt: #0f172a;
+    --txt-muted: #64748b;
+    --brd: rgba(226, 232, 240, 0.9);
+    --org: #F26522;
+    --org-glow: rgba(242, 101, 34, 0.25);
+    --grn: #10b981;
+    --blue: #3b82f6;
+    --card-shadow: 0 15px 35px -8px rgba(0, 0, 0, 0.06), 0 0 1px 1px rgba(0, 0, 0, 0.04);
+    --game-bg: #0f172a;
+    --game-grid: rgba(255, 255, 255, 0.04);
+}
+
+.dark-mode {
+    --bg-gradient: radial-gradient(circle at 50% 5%, rgba(242, 101, 34, 0.12) 0%, #0a0f1d 80%, #060913 100%);
+    --bg: #0b0f19;
+    --panel: #131b2e;
+    --panel-secondary: #1a243b;
+    --panel-hover: #23304d;
+    --txt: #f8fafc;
+    --txt-muted: #94a3b8;
+    --brd: rgba(255, 255, 255, 0.08);
+    --org: #F26522;
+    --org-glow: rgba(242, 101, 34, 0.35);
+    --grn: #10b981;
+    --blue: #60a5fa;
+    --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(242, 101, 34, 0.12);
+    --game-bg: #080c16;
+    --game-grid: rgba(255, 255, 255, 0.03);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+body {
+    font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--txt);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* شريط التنقل العلوي */
+.top-navbar {
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 10;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--txt);
+}
+
+.brand-logo img {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--org-glow);
+}
+
+.brand-logo .brand-text {
+    font-family: 'Aref Ruqaa', 'Cairo', serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.brand-logo .brand-text span {
+    color: var(--org);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.action-pill-btn {
+    background: var(--panel);
+    border: 1px solid var(--brd);
+    color: var(--txt);
+    padding: 8px 14px;
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.action-pill-btn:hover {
+    border-color: var(--org);
+    color: var(--org);
+    transform: translateY(-1px);
+}
+
+/* الحاوية الرئيسية */
+.maintenance-container {
+    max-width: 1100px;
+    width: 92%;
+    margin: 10px auto 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 26px;
+}
+
+/* شارة الحالة النابضة */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(242, 101, 34, 0.1);
+    border: 1.5px solid rgba(242, 101, 34, 0.3);
+    color: var(--org);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 13.5px;
+    font-weight: 800;
+    animation: pulseGlow 2.5s infinite;
+}
+
+.pulse-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--org);
+    position: relative;
+}
+
+.pulse-dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: var(--org);
+    opacity: 0.6;
+    animation: ripple 1.6s infinite;
+}
+
+@keyframes ripple {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(242, 101, 34, 0.2); }
+    50% { box-shadow: 0 0 25px rgba(242, 101, 34, 0.45); }
+}
+
+/* نصوص العنوان الرئيسية */
+.hero-title {
+    font-size: clamp(28px, 4.5vw, 46px);
+    font-weight: 900;
+    line-height: 1.25;
+    color: var(--txt);
+    max-width: 780px;
+}
+
+.hero-title span {
+    background: linear-gradient(135deg, #F26522, #ea580c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: clamp(15px, 2vw, 17.5px);
+    color: var(--txt-muted);
+    max-width: 680px;
+    line-height: 1.7;
+}
+
+/* كروت الأنشطة الجارية */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 5px;
+}
+
+.feature-card {
+    background: var(--panel);
+    border: 1px solid var(--brd);
+    border-radius: 18px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: right;
+    box-shadow: var(--card-shadow);
+}
+
+[dir="ltr"] .feature-card {
+    text-align: left;
+}
+
+.feature-icon-box {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: rgba(242, 101, 34, 0.12);
+    color: var(--org);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.feature-card h4 {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--txt);
+    margin-bottom: 2px;
+}
+
+.feature-card p {
+    font-size: 12px;
+    color: var(--txt-muted);
+    margin: 0;
+}
+
+/* ==========================================================================
+   🎬 مشهد الفيديو والأنيميشن التفاعلي بدون خلفية (Transparent Video/Animation)
+   مزيج متناسق بين مبرمج يكتب الكود وصيانة السيرفرات مع شعلة لحام تضيء وتقف
+   ========================================================================== */
+.maintenance-scene-section {
+    width: 100%;
+    max-width: 920px;
+    margin: 10px auto;
+}
+
+.scene-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+}
+
+.scene-card {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px;
+}
+
+.lottie-box {
+    width: 100%;
+    max-width: 320px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+}
+
+.lottie-box svg {
+    width: 100% !important;
+    height: 100% !important;
+    background: transparent !important;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15));
+}
+
+.scene-badge {
+    margin-top: 8px;
+    background: var(--panel);
+    border: 1px solid var(--brd);
+    color: var(--txt-muted);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.scene-badge i {
+    color: var(--org);
+}
+
+/* ========================================================
+   🔥 تأثير شعلة وشرارات اللحام المباشرة (تضيء ثم تقف وتبرد)
+   ======================================================== */
+.scene-card.server-scene {
+    position: relative;
+}
+
+.welder-spark-overlay {
+    position: absolute;
+    top: 40%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 15;
+}
+
+/* شعلة اللحام القوية: وميض شديد 3 ثواني ثم انطفاء وتوقف ثانيتين */
+.welding-glow-spot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow:
+        0 0 30px 15px #ffffff,
+        0 0 65px 30px #38bdf8,
+        0 0 100px 50px rgba(242, 101, 34, 0.9);
+    animation: weldingTorchCycle 5.5s infinite;
+}
+
+@keyframes weldingTorchCycle {
+    /* وميض لحام حقيقي بتردد كهربائي عالي */
+    0% { opacity: 0; transform: scale(0.2); }
+    4% { opacity: 1; transform: scale(1.4); }
+    8% { opacity: 0.7; transform: scale(0.9); }
+    12% { opacity: 1; transform: scale(1.6); }
+    16% { opacity: 0.85; transform: scale(1.1); }
+    22% { opacity: 1; transform: scale(1.5); }
+    28% { opacity: 0.6; transform: scale(0.85); }
+    34% { opacity: 1; transform: scale(1.7); }
+    42% { opacity: 0.85; transform: scale(1.2); }
+    48% { opacity: 1; transform: scale(1.6); }
+    54% { opacity: 0.9; transform: scale(1.3); }
+    57% { opacity: 1; transform: scale(1.5); }
+    
+    /* توقف اللحام وانطفاء الشعلة تماماً لتبريد وتفقد السيرفر */
+    60% { opacity: 0.3; transform: scale(0.3); }
+    62% { opacity: 0; transform: scale(0.1); }
+    100% { opacity: 0; transform: scale(0.1); }
+}
+
+/* شرارات اللحام المتطايرة */
+.welding-spark-particles {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    top: 10px;
+    left: 10px;
+}
+
+.w-spark {
+    position: absolute;
+    width: 3.5px;
+    height: 3.5px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 8px 2px #F26522, 0 0 14px 4px #38bdf8;
+    opacity: 0;
+}
+
+.p1 { animation: sparkAnim1 5.5s infinite; }
+.p2 { animation: sparkAnim2 5.5s infinite 0.15s; }
+.p3 { animation: sparkAnim3 5.5s infinite 0.35s; }
+.p4 { animation: sparkAnim4 5.5s infinite 0.55s; }
+.p5 { animation: sparkAnim1 5.5s infinite 0.85s; }
+.p6 { animation: sparkAnim2 5.5s infinite 1.2s; }
+
+@keyframes sparkAnim1 {
+    0%, 58% { opacity: 0; transform: translate(0, 0) scale(1); }
+    8% { opacity: 1; transform: translate(-45px, -30px) scale(1.4); }
+    20% { opacity: 0.8; transform: translate(-80px, 40px) scale(0.8); }
+    28% { opacity: 0; transform: translate(-105px, 80px) scale(0.1); }
+    60%, 100% { opacity: 0; }
+}
+
+@keyframes sparkAnim2 {
+    0%, 58% { opacity: 0; transform: translate(0, 0) scale(1); }
+    10% { opacity: 1; transform: translate(50px, -35px) scale(1.5); }
+    22% { opacity: 0.8; transform: translate(85px, 30px) scale(0.85); }
+    30% { opacity: 0; transform: translate(110px, 75px) scale(0.1); }
+    60%, 100% { opacity: 0; }
+}
+
+@keyframes sparkAnim3 {
+    0%, 58% { opacity: 0; transform: translate(0, 0) scale(1); }
+    14% { opacity: 1; transform: translate(-25px, 50px) scale(1.3); }
+    25% { opacity: 0.7; transform: translate(-45px, 95px) scale(0.6); }
+    34% { opacity: 0; transform: translate(-60px, 120px) scale(0.1); }
+    60%, 100% { opacity: 0; }
+}
+
+@keyframes sparkAnim4 {
+    0%, 58% { opacity: 0; transform: translate(0, 0) scale(1); }
+    12% { opacity: 1; transform: translate(30px, 45px) scale(1.4); }
+    24% { opacity: 0.8; transform: translate(60px, 85px) scale(0.7); }
+    32% { opacity: 0; transform: translate(75px, 115px) scale(0.2); }
+    60%, 100% { opacity: 0; }
+}
+
+/* ========================================================
+   🕹️ زر تشغيل وإظهار اللعبة التفاعلية (مخفية افتراضياً)
+   ======================================================== */
+.arcade-launcher-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto 14px;
+    width: 100%;
+    max-width: 620px;
+    padding: 0 16px;
+}
+
+.arcade-launcher-btn {
+    background: var(--panel);
+    border: 1.5px solid rgba(242, 101, 34, 0.45);
+    color: var(--txt);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 800;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 6px 20px rgba(242, 101, 34, 0.12);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.arcade-launcher-btn:hover {
+    border-color: var(--org);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 28px rgba(242, 101, 34, 0.28);
+}
+
+.arcade-launcher-btn:active {
+    transform: scale(0.98);
+}
+
+.arcade-launcher-btn .launcher-icon {
+    font-size: 20px;
+    color: var(--org);
+    animation: bounceGamepad 2s infinite ease-in-out;
+}
+
+@keyframes bounceGamepad {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-3px) rotate(-6deg); }
+}
+
+.arcade-launcher-btn .launcher-tag {
+    background: linear-gradient(135deg, #F26522, #ea580c);
+    color: #ffffff;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    box-shadow: 0 2px 10px rgba(242, 101, 34, 0.35);
+}
+
+/* =========================================
+   🎮 قسم لعبة الحية (Snake Arcade Game)
+   مخفية بالبداية وتظهر عند الضغط على الزر
+========================================= */
+.arcade-section {
+    display: none; /* مخفية بالبداية */
+    background: var(--panel);
+    border: 1.5px solid var(--brd);
+    border-radius: 28px;
+    padding: 24px;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+    margin: 15px auto;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.arcade-section.is-visible {
+    display: flex;
+    flex-direction: column;
+    animation: arcadeReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes arcadeReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.arcade-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--brd);
+    padding-bottom: 14px;
+}
+
+.arcade-title-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.arcade-title-box i {
+    font-size: 22px;
+    color: var(--org);
+}
+
+.arcade-title-box h3 {
+    font-size: 17px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.arcade-title-box span {
+    font-size: 12px;
+    color: var(--txt-muted);
+    display: block;
+}
+
+.arcade-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* زر التكبير والتصغير الصغير والأنيق */
+.arcade-mini-btn {
+    background: var(--panel-secondary);
+    border: 1px solid var(--brd);
+    color: var(--txt);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 800;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.arcade-mini-btn:hover {
+    border-color: var(--org);
+    color: var(--org);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(242, 101, 34, 0.25);
+}
+
+.arcade-mini-btn.active {
+    background: var(--org);
+    color: #ffffff;
+    border-color: var(--org);
+    box-shadow: 0 4px 14px rgba(242, 101, 34, 0.4);
+}
+
+.arcade-mini-btn.close-btn {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.25);
+}
+
+.arcade-mini-btn.close-btn:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+    box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+}
+
+.arcade-scores {
+    display: flex;
+    gap: 8px;
+}
+
+.score-pill {
+    background: var(--panel-secondary);
+    border: 1px solid var(--brd);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.score-pill span {
+    color: var(--org);
+    font-size: 15px;
+}
+
+.score-pill.high-score span {
+    color: #f59e0b;
+}
+
+/* منطقة الكانفاس (خريطة مكبرة وأكثر اتساعاً) */
+.canvas-wrapper {
+    position: relative;
+    background: var(--game-bg);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 520px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: 2px solid rgba(242, 101, 34, 0.35);
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+#snakeCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    touch-action: none;
+}
+
+/* شاشة البداية والنهاية للعبة */
+.game-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 15, 29, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    color: #fff;
+    padding: 20px;
+    z-index: 5;
+    transition: opacity 0.3s;
+}
+
+.game-overlay h2 {
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+}
+
+.game-overlay p {
+    font-size: 13.5px;
+    color: #cbd5e1;
+    max-width: 280px;
+}
+
+.play-btn {
+    background: linear-gradient(135deg, #F26522, #ea580c);
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 800;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 20px rgba(242, 101, 34, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.play-btn:hover {
+    transform: scale(1.04);
+    box-shadow: 0 12px 25px rgba(242, 101, 34, 0.6);
+}
+
+/* تلميح التحكم باللمس الذكي والسحب (Touch / Swipe) */
+.touch-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 16px auto 4px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--txt-muted);
+    background: var(--panel-secondary);
+    border: 1px solid var(--brd);
+    padding: 8px 18px;
+    border-radius: 30px;
+    width: fit-content;
+    max-width: 95%;
+    user-select: none;
+}
+
+.touch-hint i {
+    color: var(--org);
+    font-size: 15px;
+    animation: touchHintPulse 2s infinite ease-in-out;
+}
+
+@keyframes touchHintPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.25); opacity: 1; }
+}
+
+
+/* أزرار التحكم السريعة وأوضاع السرعة */
+.game-controls-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+.control-pill {
+    background: var(--panel-secondary);
+    border: 1px solid var(--brd);
+    color: var(--txt);
+    padding: 7px 16px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.control-pill:hover {
+    border-color: var(--org);
+    color: var(--org);
+}
+
+/* شريط اختيار سرعة اللعبة (بطيء / عادي / سريع / صاروخي) */
+.speed-selector-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 6px auto 14px;
+    flex-wrap: wrap;
+    background: var(--panel-secondary);
+    padding: 8px 14px;
+    border-radius: 40px;
+    border: 1px solid var(--brd);
+    width: fit-content;
+    max-width: 100%;
+}
+
+.speed-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--txt-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.speed-options {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.speed-pill {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--txt-muted);
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.speed-pill:hover {
+    color: var(--txt);
+    background: rgba(242, 101, 34, 0.08);
+    border-color: rgba(242, 101, 34, 0.25);
+}
+
+.speed-pill.active {
+    background: linear-gradient(135deg, #F26522, #ea580c);
+    color: #ffffff !important;
+    border-color: #F26522;
+    box-shadow: 0 4px 12px rgba(242, 101, 34, 0.35);
+}
+
+/* ========================================================
+   🌐 وضع الشاشة الموسعة للعبة (Expanded Fullscreen Theater)
+   ======================================================== */
+.arcade-section.is-expanded {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    background: rgba(7, 11, 22, 0.96);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    margin: 0;
+    overflow-y: auto;
+    animation: expandArcade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes expandArcade {
+    0% { transform: scale(0.92); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.arcade-section.is-expanded .canvas-wrapper {
+    max-width: min(82vh, 600px);
+    border-color: var(--org);
+    box-shadow: 0 0 50px rgba(242, 101, 34, 0.4);
+}
+
+.arcade-section.is-expanded .arcade-header {
+    width: 100%;
+    max-width: 700px;
+}
+
+.arcade-section.is-expanded .speed-selector-bar {
+    margin-top: 10px;
+}
+
+body.has-arcade-expanded {
+    overflow: hidden !important;
+}
+
+/* ========================================================
+   🌐 تصميم الفوتر الأكاديمي المتطور (مطابق لواجهة المنصة)
+   ======================================================== */
+.site-footer {
+    margin-top: auto;
+    width: 100%;
+    background: var(--panel);
+    border-top: 1px solid var(--brd);
+    padding: 45px 20px 32px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.footer-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer-brand {
+    font-family: 'Aref Ruqaa', 'Cairo', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--txt);
+    letter-spacing: 0.5px;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.footer-brand span {
+    color: #F26522;
+}
+
+.footer-slogan {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--txt-muted);
+    line-height: 1.7;
+    max-width: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.quick-support-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: 4px 0;
+}
+
+.support-badge-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: var(--panel-secondary);
+    border: 1px solid var(--brd);
+    color: var(--txt);
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.support-badge-btn i {
+    font-size: 16px;
+}
+
+.support-badge-btn.telegram-btn i {
+    color: #229ED9;
+}
+
+.support-badge-btn.email-btn i {
+    color: var(--org);
+}
+
+.support-badge-btn:hover {
+    border-color: var(--org);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(242, 101, 34, 0.2);
+    color: var(--org);
+}
+
+.footer-social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 6px 0;
+}
+
+.social-circle-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--panel-secondary);
+    border: 1px solid var(--brd);
+    color: var(--txt-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-circle-btn:hover {
+    color: #ffffff;
+    background: var(--org);
+    border-color: var(--org);
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 8px 20px rgba(242, 101, 34, 0.35);
+}
+
+.footer-copyright {
+    margin-top: 8px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--brd);
+    width: 100%;
+    color: var(--txt-muted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .scene-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-title { font-size: 26px; }
+    .arcade-section { padding: 16px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .lottie-box { height: 200px; max-width: 260px; }
+    .arcade-section.is-expanded .canvas-wrapper {
+        max-width: 320px;
+    }
+}
