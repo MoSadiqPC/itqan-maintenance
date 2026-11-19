@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الموقع قيد التطوير والترقية | مِـنَـصَّـةُ إِسْـأَلْ</title>
+
+    <link rel="icon" href="/static/icon.jpg?v=1" type="image/jpeg">
+    <link rel="shortcut icon" href="/static/favicon.ico?v=1" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ملف التنسيقات الخارجي المنفصل والمعزول تماماً -->
+    <link rel="stylesheet" href="/static/css/updateapp.css?v=4.0">
+
+    <!-- مزامنة الثيم لحظياً قبل اكتمال التحميل لمنع الوميض -->
+    <script>
+        try {
+            if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        } catch (e) { }
+    </script>
+</head>
+
+<body>
+    <!-- شريط التنقل العلوي -->
+    <header class="top-navbar">
+        <a href="/" class="brand-logo">
+            <img src="/static/icon.jpg" onerror="this.style.display='none'" alt="إسأل">
+            <span class="brand-text">مِـنَـصَّـةُ <span>إِسْـأَلْ</span></span>
+        </a>
+
+        <div class="nav-actions">
+            <!-- زر تبديل اللغة -->
+            <button class="action-pill-btn" onclick="toggleLanguage()" id="langToggleBtn" title="Change Language / تغيير اللغة">
+                <i class="fas fa-globe"></i>
+                <span id="currentLangTxt">English</span>
+            </button>
+
+            <!-- زر تبديل الوضع الليلي / النهاري -->
+            <button class="action-pill-btn" onclick="toggleTheme()" id="themeToggleBtn" title="تبديل وضع العرض">
+                <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="maintenance-container">
+        <!-- شارة الحالة النابضة -->
+        <div class="status-badge">
+            <span class="pulse-dot"></span>
+            <span id="txtStatusBadge" data-i18n="status_badge">جاري تحديث وتطوير أنظمة المنصة اللحظية...</span>
+        </div>
+
+        <!-- العناوين الأساسية للمنصة -->
+        <h1 class="hero-title" id="txtHeroTitle" data-i18n="hero_title">
+            نأسف لإزعاجكم، <span>نعمل لخدمتكم</span>
+        </h1>
+        <p class="hero-subtitle" id="txtHeroSubtitle" data-i18n="hero_subtitle">
+            الموقع قيد التطوير والترقية في الوقت الحالي لتقديم تجربة أكاديمية متفوقة وسريعة، وسيعمل قريباً جداً بكامل طاقته.
+        </p>
+
+        <!-- كروت المهام الجارية -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon-box"><i class="fas fa-bolt"></i></div>
+                <div>
+                    <h4 data-i18n="task1_title">ترقية خوادم الفحص</h4>
+                    <p data-i18n="task1_desc">مضاعفة سرعة استخراج وفحص نسب الاستلال وتوليد تقارير Turnitin.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-box"><i class="fas fa-brain"></i></div>
+                <div>
+                    <h4 data-i18n="task2_title">تحديث محركات الذكاء الاصطناعي</h4>
+                    <p data-i18n="task2_desc">رفع دقة كاشف AI Detector والأدوات الأكاديمية والترجمة المزدوجة.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-box"><i class="fas fa-shield-alt"></i></div>
+                <div>
+                    <h4 data-i18n="task3_title">تعزيز الأمان والحماية</h4>
+                    <p data-i18n="task3_desc">تشفير متقدم لقواعد البيانات وضمان حماية أبحاث الباحثين والطلبة 100%.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🎬 مشهد الفيديو والأنيميشن التفاعلي: مبرمج يكتب الكود وصيانة السيرفرات مع اللحام الكهربائي (بدون خلفية) -->
+        <section class="maintenance-scene-section">
+            <div class="scene-grid">
+                <!-- المشهد الأول: مبرمج يكتب الكود بشفافية تامة وبدون خلفية -->
+                <div class="scene-card">
+                    <div class="lottie-box" id="lottieDeveloper"></div>
+                    <div class="scene-badge">
+                        <i class="fas fa-laptop-code"></i>
+                        <span data-i18n="dev_scene_badge">برمجة وبناء المنصة الأكاديمية</span>
+                    </div>
+                </div>
+
+                <!-- المشهد الثاني: صيانة السيرفرات المركزية مع شعلة لحام تضيء وتقف -->
+                <div class="scene-card server-scene">
+                    <div class="lottie-box" id="lottieServer"></div>
+                    <!-- شعلة اللحام الكهربائي التي تضيء بوميض شديد ثم تقف وتبرد دورياً -->
+                    <div class="welder-spark-overlay" aria-hidden="true">
+                        <div class="welding-glow-spot"></div>
+                        <div class="w-spark w-s1"></div>
+                        <div class="w-spark w-s2"></div>
+                        <div class="w-spark w-s3"></div>
+                        <div class="w-spark w-s4"></div>
+                        <div class="w-spark w-s5"></div>
+                        <div class="w-spark w-s6"></div>
+                    </div>
+                    <div class="scene-badge">
+                        <i class="fas fa-server"></i>
+                        <span data-i18n="server_scene_badge">صيانة وتحديث السيرفرات المركزية</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🕹️ زر تشغيل وإظهار اللعبة التفاعلية (مخفية بالبداية) -->
+        <div class="arcade-launcher-container">
+            <button class="arcade-launcher-btn" id="arcadeLauncherBtn" onclick="toggleArcadeVisibility(true)">
+                <i class="fas fa-gamepad launcher-icon"></i>
+                <span class="launcher-text" data-i18n="arcade_launcher_txt">تسلَّ باللعب أثناء انتظار اكتمال التحديث</span>
+                <span class="launcher-tag" data-i18n="arcade_open_tag">فتح اللعبة 🕹️</span>
+            </button>
+        </div>
+
+        <!-- 🎮 قسم لعبة الحية الخاصة والمطورة (مخفي بالبداية) -->
+        <div class="arcade-section" id="arcadeSection">
+            <div class="arcade-header">
+                <div class="arcade-title-box">
+                    <i class="fas fa-gamepad"></i>
+                    <div>
+                        <h3 data-i18n="game_title">لعبة الحية التفاعلية</h3>
+                        <span data-i18n="game_desc">تسلى باللعب بينما يكتمل تحديث المنصة!</span>
+                    </div>
+                </div>
+                <div class="arcade-header-actions">
+                    <button class="arcade-mini-btn close-btn" onclick="toggleArcadeVisibility(false)" title="إغلاق وإخفاء اللعبة">
+                        <i class="fas fa-times"></i>
+                        <span data-i18n="arcade_close_btn">إغلاق اللعبة</span>
+                    </button>
+                    <button class="arcade-mini-btn" id="arcadeExpandBtn" onclick="toggleArcadeExpand()" title="تكبير الشاشة">
+                        <i class="fas fa-expand-alt" id="arcadeToggleIcon"></i>
+                        <span id="arcadeToggleText" data-i18n="arcade_expand_btn">تكبير اللعبة</span>
+                    </button>
+                    <div class="arcade-scores">
+                        <div class="score-pill">
+                            <i class="fas fa-star" style="color:var(--org);"></i>
+                            <span id="snakeScore">0</span>
+                        </div>
+                        <div class="score-pill high-score" title="أعلى نتيجة حققتها">
+                            <i class="fas fa-trophy" style="color:#f59e0b;"></i>
+                            <span id="snakeHighScore">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- شريط اختيار مستوى السرعة (بطيء / عادي / سريع / صاروخي) -->
+            <div class="speed-selector-bar">
+                <span class="speed-label"><i class="fas fa-tachometer-alt" style="color:var(--org);"></i> <span data-i18n="speed_label">مستوى السرعة:</span></span>
+                <div class="speed-options">
+                    <button class="speed-pill" data-speed="slow" onclick="setGameSpeed('slow')" title="سرعة هادئة ومريحة">
+                        <span>🐢</span> <span data-i18n="speed_slow">بطيء</span>
+                    </button>
+                    <button class="speed-pill active" data-speed="normal" onclick="setGameSpeed('normal')" title="السرعة القياسية المتوازنة">
+                        <span>⚡</span> <span data-i18n="speed_normal">عادي</span>
+                    </button>
+                    <button class="speed-pill" data-speed="fast" onclick="setGameSpeed('fast')" title="سرعة عالية وتحدي حماسي">
+                        <span>🔥</span> <span data-i18n="speed_fast">سريع</span>
+                    </button>
+                    <button class="speed-pill" data-speed="insane" onclick="setGameSpeed('insane')" title="أقصى سرعة للمحترفين">
+                        <span>🚀</span> <span data-i18n="speed_insane">صاروخي</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- الكانفاس والشاشات المنبثقة (خريطة مكبرة وموسعة 500x500) -->
+            <div class="canvas-wrapper">
+                <canvas id="snakeCanvas" width="500" height="500"></canvas>
+
+                <!-- شاشة البداية -->
+                <div id="gameStartOverlay" class="game-overlay">
+                    <i class="fas fa-dragon" style="font-size: 48px; color: var(--org);"></i>
+                    <h2 data-i18n="game_ready">جاهز للتحدي؟</h2>
+                    <p data-i18n="game_instr">اسحب بإصبعك على الشاشة لتوجيه الحية، أو استخدم أسهم الكيبورد لجمع الطاقة.</p>
+                    <button class="play-btn" onclick="startGame()">
+                        <i class="fas fa-play"></i> <span data-i18n="game_start_btn">ابدأ اللعب الآن</span>
+                    </button>
+                </div>
+
+                <!-- شاشة الخسارة -->
+                <div id="gameOverOverlay" class="game-overlay" style="display: none;">
+                    <i class="fas fa-skull-crossbones" style="font-size: 46px; color: #ef4444;"></i>
+                    <h2 data-i18n="game_over">انتهت اللعبة!</h2>
+                    <p id="gameOverScoreText">مجموع نقاطك: 0</p>
+                    <button class="play-btn" onclick="startGame()">
+                        <i class="fas fa-redo"></i> <span data-i18n="game_restart_btn">العب مرة أخرى</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- أزرار التحكم السريعة -->
+            <div class="game-controls-bar">
+                <button class="control-pill" onclick="togglePauseGame()">
+                    <i class="fas fa-pause" id="pauseBtnIcon"></i> <span id="pauseBtnTxt" data-i18n="game_pause">إيقاف مؤقت</span>
+                </button>
+                <button class="control-pill" onclick="resetGame()">
+                    <i class="fas fa-sync-alt"></i> <span data-i18n="game_reset">إعادة الضبط</span>
+                </button>
+            </div>
+
+            <!-- تلميح التحكم اللمسي الخالص (سحب الشاشة للموبايل والأسهم للكمبيوتر) -->
+            <div class="touch-hint">
+                <i class="fas fa-hand-pointer"></i>
+                <span data-i18n="touch_hint">اسحب بإصبعك على الشاشة (Swipe) في الموبايل أو استخدم الأسهم في الحاسبة</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- الفوتر الأكاديمي المتطور (مطابق لواجهة المنصة الرسمية) -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- الشعار الرسمي بخط الرقعة العربي المميز -->
+            <div class="footer-brand">
+                مِـنَـصَّـةُ <span>إِسْـأَلْ</span>
+            </div>
+
+            <!-- العنوان والشعار النصي المعتمد في المنصة -->
+            <div class="footer-slogan">
+                <i class="fas fa-map-marker-alt" style="color:var(--org); margin-left:6px;"></i>
+                <span id="footerSloganText">{{ footer_slogan | default('مختبر إسأل - العنوان: النجف الأشرف / شارع الجنسية - المجمع اللبناني - مقابل الملاعب.') }}</span>
+            </div>
+
+            <!-- أزرار التواصل المباشر (تليجرام والبريد الرسمي) -->
+            <div class="quick-support-links">
+                <a href="{{ support_telegram | default('https://t.me/itqan_tech') }}" target="_blank" rel="noopener noreferrer" class="support-badge-btn telegram-btn" title="تواصل مع الدعم الفني">
+                    <i class="fab fa-telegram"></i> <span data-i18n="support_telegram_txt">Telegram الدعم الفني</span>
+                </a>
+                <a href="mailto:{{ support_email | default('itqan.tech.iq@gmail.com') }}" class="support-badge-btn email-btn" title="راسلنا عبر البريد الرسمي">
+                    <i class="fas fa-envelope"></i> <span data-i18n="support_email_txt">البريد الرسمي</span>
+                </a>
+            </div>
+
+            <!-- روابط التواصل الاجتماعي النشطة من قاعدة البيانات -->
+            <div class="footer-social-icons">
+                {% if social_links %}
+                    {% for item in social_links %}
+                    <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="{{ item.platform_name }}" aria-label="{{ item.platform_name }}">
+                        <i class="{{ item.icon_class or 'fas fa-link' }}"></i>
+                    </a>
+                    {% endfor %}
+                {% else %}
+                    <a href="https://t.me/itqan_tech" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="تليجرام"><i class="fab fa-telegram"></i></a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="يوتيوب"><i class="fab fa-youtube"></i></a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="جيت هب"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="تويتر / X"><i class="fab fa-twitter"></i></a>
+                {% endif %}
+            </div>
+
+            <!-- سطر حقوق الملكية والحفظ الأكاديمي -->
+            <div class="footer-copyright">
+                <p data-i18n="footer_copy">{{ footer_copyright | default('جميع الحقوق محفوظة © 2026 مِـنَـصَّـةُ إِسْـأَلْ الأكاديمية (itqan.tech)') }}</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- مكتبة تشغيل الأنيميشن المتجهي الشفاف محلياً بدون أي خلفية -->
+    <script src="/static/js/lottie.min.js"></script>
+    <!-- ملف الجافاسكربت الخارجي المنفصل والمعزول تماماً -->
+    <script src="/static/js/updateapp.js?v=4.0"></script>
+</body>
+
+</html>
